@@ -36,6 +36,34 @@ Press **`q`** to quit any script.
 
 ---
 
+## Screenshots
+
+<div align="center">
+
+### Hand Tracking
+<img src="assets/handtracking.png" alt="Hand Tracking" width="600" />
+
+21 landmarks per hand with connections and highlighted thumb tip.
+
+### Face Detection
+<img src="assets/facedetection.png" alt="Face Detection" width="600" />
+
+Bounding box with confidence percentage.
+
+### Pose Estimation
+<img src="assets/posetracking.png" alt="Pose Tracking" width="600" />
+
+33 body landmarks with full skeleton connections.
+
+### Eye / Face Mesh Recognition
+<img src="assets/eyerecognition.png" alt="Eye Recognition" width="600" />
+
+478-point face mesh with highlighted eye landmarks.
+
+</div>
+
+---
+
 ## Scripts
 
 | Script | What it does |
@@ -119,6 +147,11 @@ Press **`q`** to close the window.
 
 ```
 Recognition-Using-Mediapipe/
+├── assets/
+│   ├── handtracking.png   # Screenshot — hand landmarks
+│   ├── facedetection.png  # Screenshot — face bounding box
+│   ├── posetracking.png   # Screenshot — pose skeleton
+│   └── eyerecognition.png # Screenshot — face mesh
 ├── Handtracking.py        # Hand landmark detection (21 points per hand)
 ├── Facedetection.py       # Face bounding box detection with confidence
 ├── Posetracking.py        # Full body pose estimation (33 landmarks)
