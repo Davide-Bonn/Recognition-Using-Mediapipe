@@ -16,9 +16,11 @@
 
 Face detection, hand tracking, pose estimation, and eye/face mesh recognition — all running live from your webcam.
 
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python_3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-0097A7?style=for-the-badge&logo=google&logoColor=white)](https://mediapipe.dev/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
+[![License](https://img.shields.io/github/license/Davide-Bonn/Recognition-Using-Mediapipe?style=for-the-badge)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Davide-Bonn/Recognition-Using-Mediapipe?style=for-the-badge&color=yellow)](https://github.com/Davide-Bonn/Recognition-Using-Mediapipe/stargazers)
 
 ---
 
@@ -87,7 +89,7 @@ Each script follows the same pipeline:
 ```bash
 git clone https://github.com/Davide-Bonn/Recognition-Using-Mediapipe.git
 cd Recognition-Using-Mediapipe
-pip install mediapipe opencv-contrib-python pyautogui
+pip install -r requirements.txt
 ```
 
 ### 2. Run any script
@@ -117,10 +119,12 @@ Press **`q`** to close the window.
 
 ```
 Recognition-Using-Mediapipe/
-├── Handtracking.py      # Hand landmark detection (21 points per hand)
-├── Facedetection.py     # Face bounding box detection with confidence
-├── Posetracking.py      # Full body pose estimation (33 landmarks)
-├── EyeRecognition.py    # Dense face mesh (478 points) with eye tracking
+├── Handtracking.py        # Hand landmark detection (21 points per hand)
+├── Facedetection.py       # Face bounding box detection with confidence
+├── Posetracking.py        # Full body pose estimation (33 landmarks)
+├── EyeRecognition.py      # Dense face mesh (478 points) with eye tracking
+├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -136,4 +140,4 @@ Recognition-Using-Mediapipe/
 
 ## License
 
-Personal project for learning computer vision with MediaPipe.
+[MIT License](LICENSE) — see LICENSE for details.
