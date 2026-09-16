@@ -1,26 +1,15 @@
 <div align="center">
 
-<br/>
+# Recognition Using MediaPipe
 
-```
-    ╔══════════════════════════════════════════════╗
-    ║                                              ║
-    ║   👁  RECOGNITION USING MEDIAPIPE  🤖        ║
-    ║                                              ║
-    ║   Hand · Face · Pose · Eye Mesh              ║
-    ║                                              ║
-    ╚══════════════════════════════════════════════╝
-```
+**Real-time computer vision demos — hand tracking, face detection, pose estimation, and eye mesh**
 
-**Real-time computer vision demos powered by MediaPipe and OpenCV.**
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://mediapipe.dev)
+[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-Face detection, hand tracking, pose estimation, and eye/face mesh recognition — all running live from your webcam.
-
-[![Python](https://img.shields.io/badge/Python_3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![MediaPipe](https://img.shields.io/badge/MediaPipe-0097A7?style=for-the-badge&logo=google&logoColor=white)](https://mediapipe.dev/)
-[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
-[![License](https://img.shields.io/github/license/Davide-Bonn/Recognition-Using-Mediapipe?style=for-the-badge)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/Davide-Bonn/Recognition-Using-Mediapipe?style=for-the-badge&color=yellow)](https://github.com/Davide-Bonn/Recognition-Using-Mediapipe/stargazers)
+*Four standalone demos running live from your webcam. Press `q` to quit any script.*
 
 ---
 
@@ -28,91 +17,43 @@ Face detection, hand tracking, pose estimation, and eye/face mesh recognition �
 
 ## Overview
 
-Four standalone Python scripts that demonstrate core MediaPipe solutions using your webcam. Each script opens a live video feed, processes frames in real time, and draws the detected landmarks or bounding boxes directly on screen.
-
-Press **`q`** to quit any script.
-
-> **Looking for the eye-controlled mouse?** Check out [**MouseEye**](https://github.com/Davide-Bonn/MouseEye) — a separate project that lets you control your cursor with your eyes and click by blinking.
+This repository contains four self-contained computer vision demos built with MediaPipe and OpenCV. Each script captures webcam input and applies a different MediaPipe solution in real time — from hand landmark detection to full-body pose estimation. They serve as clear, minimal examples of how to integrate MediaPipe into Python projects.
 
 ---
 
-## Screenshots
+## Demos
 
-<div align="center">
-
-### Hand Tracking
-<img src="assets/handtracking.png" alt="Hand Tracking" width="600" />
-
-21 landmarks per hand with connections and highlighted thumb tip.
-
-### Face Detection
-<img src="assets/facedetection.png" alt="Face Detection" width="600" />
-
-Bounding box with confidence percentage.
-
-### Pose Estimation
-<img src="assets/posetracking.png" alt="Pose Tracking" width="600" />
-
-33 body landmarks with full skeleton connections.
-
-### Eye / Face Mesh Recognition
-<img src="assets/eyerecognition.png" alt="Eye Recognition" width="600" />
-
-478-point face mesh with highlighted eye landmarks.
-
-</div>
-
----
-
-## Scripts
-
-| Script | What it does |
-|--------|-------------|
-| **`Handtracking.py`** | Detects hands and draws 21 landmarks per hand with connections. Highlights the thumb tip (landmark 4) with a larger circle. Displays FPS |
-| **`Facedetection.py`** | Detects faces and draws bounding boxes with confidence percentages. Displays FPS |
-| **`Posetracking.py`** | Detects 33 body pose landmarks and draws the full skeleton with connections. Displays FPS |
-| **`EyeRecognition.py`** | Draws all 478 face mesh landmarks and highlights key eye landmarks (145, 159) for left eye tracking |
+| Script | What It Does | Landmarks |
+|:---|:---|:---|
+| `Handtracking.py` | Detects hands, draws 21 landmarks per hand with connections, highlights thumb tip, displays FPS | 21 per hand |
+| `Facedetection.py` | Detects faces, draws bounding boxes with confidence percentages, displays FPS | 6 keypoints |
+| `Posetracking.py` | Detects 33 body pose landmarks, draws full skeleton, displays FPS | 33 |
+| `EyeRecognition.py` | Draws all 478 face mesh landmarks, highlights key eye landmarks (145, 159) | 478 |
 
 ---
 
 ## How It Works
 
-Each script follows the same pipeline:
-
 ```
-┌──────────┐    ┌──────────┐    ┌───────────┐    ┌──────────┐    ┌─────────┐
-│  Webcam  │ ─► │ BGR→RGB  │ ─► │ MediaPipe │ ─► │   Draw   │ ─► │ Display │
-│  Frame   │    │ Convert  │    │  Process  │    │ Landmarks│    │  imshow │
-└──────────┘    └──────────┘    └───────────┘    └──────────┘    └─────────┘
+Webcam Frame --> BGR to RGB --> MediaPipe Process --> Draw Landmarks --> Display
 ```
 
-1. **Capture** — OpenCV reads frames from the default webcam (`VideoCapture(0)`)
-2. **Convert** — Frames are converted from BGR to RGB (MediaPipe expects RGB input)
-3. **Process** — The relevant MediaPipe solution analyzes the frame and returns landmarks
-4. **Draw** — Landmarks, bounding boxes, or connections are drawn onto the original frame
-5. **Display** — The annotated frame is shown in an OpenCV window
+Each script follows the same pipeline: capture a frame from the webcam, convert it from BGR to RGB for MediaPipe processing, run the relevant MediaPipe solution, draw the detected landmarks back onto the frame, and display the result in a window.
 
 ---
 
 ## MediaPipe Solutions Used
 
-| Solution | Script | Landmarks | Description |
-|----------|--------|-----------|-------------|
-| **Hands** | `Handtracking.py` | 21 per hand | Detects hand skeleton — fingertips, knuckles, wrist |
-| **Face Detection** | `Facedetection.py` | 6 keypoints | Lightweight face bounding box with confidence score |
-| **Face Mesh** | `EyeRecognition.py` | 478 | Dense face mesh with refined iris landmarks |
-| **Pose** | `Posetracking.py` | 33 | Full body skeleton — shoulders, elbows, hips, knees, ankles |
+| Solution | Script | Description |
+|:---|:---|:---|
+| Hands | `Handtracking.py` | Detects up to 2 hands with 21 landmarks each |
+| Face Detection | `Facedetection.py` | Lightweight face detector with 6 keypoints |
+| Pose | `Posetracking.py` | Full-body pose estimation with 33 landmarks |
+| Face Mesh | `EyeRecognition.py` | Dense 478-point face mesh for detailed facial feature tracking |
 
 ---
 
 ## Quick Start
-
-### Prerequisites
-
-- [Python](https://www.python.org/) 3.8+
-- A webcam
-
-### 1. Clone and install
 
 ```bash
 git clone https://github.com/Davide-Bonn/Recognition-Using-Mediapipe.git
@@ -120,7 +61,7 @@ cd Recognition-Using-Mediapipe
 pip install -r requirements.txt
 ```
 
-### 2. Run any script
+Run any demo:
 
 ```bash
 python Handtracking.py
@@ -129,48 +70,24 @@ python Posetracking.py
 python EyeRecognition.py
 ```
 
-Press **`q`** to close the window.
+Press `q` to quit.
 
 ---
 
 ## Dependencies
 
-| Package | Purpose |
-|---------|---------|
-| `mediapipe` | ML models for hand, face, pose, and mesh detection |
-| `opencv-contrib-python` | Webcam capture, image processing, and display |
-| `pyautogui` | Screen resolution detection (used in `EyeRecognition.py`) |
+- `mediapipe`
+- `opencv-contrib-python`
+- `pyautogui`
 
 ---
 
-## Project Structure
+## Related Projects
 
-```
-Recognition-Using-Mediapipe/
-├── assets/
-│   ├── handtracking.png   # Screenshot — hand landmarks
-│   ├── facedetection.png  # Screenshot — face bounding box
-│   ├── posetracking.png   # Screenshot — pose skeleton
-│   └── eyerecognition.png # Screenshot — face mesh
-├── Handtracking.py        # Hand landmark detection (21 points per hand)
-├── Facedetection.py       # Face bounding box detection with confidence
-├── Posetracking.py        # Full body pose estimation (33 landmarks)
-├── EyeRecognition.py      # Dense face mesh (478 points) with eye tracking
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
-
----
-
-## Related
-
-| Project | Description |
-|---------|-------------|
-| [**MouseEye**](https://github.com/Davide-Bonn/MouseEye) | Eye-controlled mouse — move cursor with your iris, blink to click |
+- [MouseEye](https://github.com/Davide-Bonn/MouseEye) — Eye-controlled mouse built on top of these demos
 
 ---
 
 ## License
 
-[MIT License](LICENSE) — see LICENSE for details.
+MIT
